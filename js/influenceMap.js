@@ -14,9 +14,10 @@ jQuery(document).ready(function(){
 					// so trigger focusout handlers to remove .ui-state-focus
 					ui.item.children( "h3" ).triggerHandler( "focusout" );
 				},
-				update: function() {
+				update: function(e, ui) {
 					var order = $(this).sortable('toArray');
 					console.log(order);
+					console.log("Item now at position " + (ui.item.index() + 1).toString());
 					console.log("Position Has changed: Thank You");
 				}
 			});
