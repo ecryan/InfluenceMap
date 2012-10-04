@@ -4,7 +4,7 @@ jQuery(document).ready(function(){
         $(function() {
 		$( "#accordion" )
 			.accordion({
-				header: "> div > h3"
+				header: "div > h3"
 			})
 			.sortable({
 				axis: "y",
@@ -13,14 +13,20 @@ jQuery(document).ready(function(){
 					// IE doesn't register the blur when sorting
 					// so trigger focusout handlers to remove .ui-state-focus
 					ui.item.children( "h3" ).triggerHandler( "focusout" );
+				},
+				update: function() {
+					var order = $(this).sortable('toArray');
+					console.log(order);
+					console.log("Position Has changed: Thank You");
 				}
 			});
 	});
-	//dynamicly change sectioon header with accordians first input
+	//dynamicly change section header with accordians first input
 	$('input[id^="label"]').keyup(function() {
 
 		// collect the id of element in focus	
 		var labelHolder = $(this).attr("id");
+		console.log(labelHolder);
 		// trim of the naming convention and keep the trailing number
 		var sectionNumber = labelHolder.slice(5);
 		//adds the input value to the section header
@@ -28,7 +34,7 @@ jQuery(document).ready(function(){
 	});
 	
  
-	
+	/*
 	//checking for the click on accordion header
 	$('h3').mousedown( function() {
 		// a var to make the mouse move event boolean ** use with mouse down to target a drag **
@@ -44,6 +50,7 @@ jQuery(document).ready(function(){
 		};
 		
 	});
+	*/
 	
 	// accordian storage array 
 	var sectionOrder = [];
@@ -59,7 +66,7 @@ jQuery(document).ready(function(){
 				//$('form').each( console.log($(this).serializeArray()));
 				// pusshing section titles on the order array
 				sectionOrder.push(index + ': ' + $(this).text());
-				console.log(index + ': ' + $(this).text());
+				//console.log(index + ': ' + $(this).text());
 			});
 		}else{
 			$('h3 a').each(function(index, value) {
@@ -69,7 +76,7 @@ jQuery(document).ready(function(){
 			
 			for(var i =0; i < sectionOrder.length; i++){
 				if(sectionOrder[i] != tempOrder[i]){
-					console.log(sectionOrder[i]);
+					//console.log(sectionOrder[i]);
 				}
 				
 			}
