@@ -17,12 +17,12 @@ jQuery(document).ready(function(){
 				update: function(e, ui) {
 					var order = $(this).sortable('toArray');
 					console.log(order);
-					console.log("Item now at position " + (ui.item.index() + 1).toString());
+					console.log("Div " + ui.item.attr("id") + " now at position " + (ui.item.index() + 1).toString());
 					console.log("Position Has changed: Thank You");
 				}
 			});
 	});
-	//dynamicly change section header with accordians first input
+	//dynamicly change section header with accordions first input
 	$('input[id^="label"]').keyup(function() {
 
 		// collect the id of element in focus	
